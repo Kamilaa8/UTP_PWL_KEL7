@@ -12,6 +12,7 @@
             font-family: 'Instrument Sans', sans-serif;
         }
     </style>
+    @stack('styles')
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
