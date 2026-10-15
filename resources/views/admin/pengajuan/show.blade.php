@@ -6,12 +6,6 @@
     <a href="{{ route('admin.pengajuan.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">&larr; Kembali</a>
 </div>
 
-@if(session('success'))
-    <div class="mb-4 px-4 py-3 text-sm text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg">
-        {{ session('success') }}
-    </div>
-@endif
-
 <div class="bg-white border border-gray-200 rounded-xl p-6 space-y-5">
     <div class="flex items-center justify-between">
         <span class="text-sm text-gray-500">Status</span>

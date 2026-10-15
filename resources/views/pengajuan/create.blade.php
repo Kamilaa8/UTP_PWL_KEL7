@@ -48,6 +48,7 @@
                 @if($pet->description)
                     <div class="bg-gray-50 p-3.5 rounded-xl text-xs text-gray-600 leading-relaxed border border-gray-100">
                         <span class="font-semibold text-gray-700 block mb-1">Tentang {{ $pet->name }}:</span>
+                        <p>{{ $pet->description }}</p>
                     </div>
                 @endif
 

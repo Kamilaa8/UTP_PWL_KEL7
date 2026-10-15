@@ -25,7 +25,7 @@
                         </svg>
                         <span>PawPal</span>
                     </a>
-                    <div class="hidden sm:flex sm:items-center sm:gap-6">
+                    <div class="flex items-center gap-4 sm:gap-6">
                         <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Beranda</a>
                         @auth
                             <a href="{{ route('dashboard') }}" class="text-sm font-medium {{ request()->routeIs('dashboard') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Dashboard</a>
