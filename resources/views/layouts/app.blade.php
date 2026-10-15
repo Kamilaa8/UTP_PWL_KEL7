@@ -29,6 +29,10 @@
                         <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Beranda</a>
                         @auth
                             <a href="{{ route('dashboard') }}" class="text-sm font-medium {{ request()->routeIs('dashboard') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Dashboard</a>
+                            <a href="{{ route('pengajuan.riwayat') }}" class="text-sm font-medium {{ request()->routeIs('pengajuan.riwayat') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Riwayat Pengajuan</a>
+                            @if(auth()->user()->isAdmin())
+                                <a href="{{ route('admin.dashboard') }}" class="text-sm font-medium {{ request()->is('admin*') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Panel Admin</a>
+                            @endif
                         @endauth
                     </div>
                 </div>

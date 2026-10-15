@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    public function pengajuanAdopsi()
+    {
+        return $this->hasMany(PengajuanAdopsi::class);
+    }
 }

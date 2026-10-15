@@ -40,19 +40,31 @@ class PengajuanController extends Controller
 
     public function setujui(PengajuanAdopsi $pengajuan)
     {
-        $pengajuan->status = 'disetujui';
-        $pengajuan->save();
+        $pengajuan->update([
+            'status' => 'disetujui',
+            'alasan_penolakan' => null,
+        ]);
+
+        if ($pengajuan->pet) {
+            $pengajuan->pet->update(['status' => 'diadopsi']);
+        }
 
         return redirect()->route('admin.pengajuan.show', $pengajuan)
-            ->with('success', 'Pengajuan disetujui.');
+            ->with('success', 'Pengajuan adopsi disetujui. Status hewan diperbarui menjadi "diadopsi".');
     }
 
-    public function tolak(PengajuanAdopsi $pengajuan)
+    public function tolak(Request $request, PengajuanAdopsi $pengajuan)
     {
-        $pengajuan->status = 'ditolak';
-        $pengajuan->save();
+        $request->validate([
+            'alasan_penolakan' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $pengajuan->update([
+            'status' => 'ditolak',
+            'alasan_penolakan' => $request->alasan_penolakan ?: 'Pengajuan belum memenuhi kriteria adopsi.',
+        ]);
 
         return redirect()->route('admin.pengajuan.show', $pengajuan)
-            ->with('success', 'Pengajuan ditolak.');
+            ->with('success', 'Pengajuan berhasil ditolak.');
     }
 }

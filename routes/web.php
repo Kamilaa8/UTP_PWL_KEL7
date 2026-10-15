@@ -3,9 +3,10 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\Admin\PetController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\PengajuanController;
+use App\Http\Controllers\Admin\PengajuanController as AdminPengajuanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,6 +21,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/pets/{pet}/adopt', [PengajuanController::class, 'create'])->name('pengajuan.create');
+    Route::post('/pets/{pet}/adopt', [PengajuanController::class, 'store'])->name('pengajuan.store');
+    Route::get('/riwayat-pengajuan', [PengajuanController::class, 'riwayat'])->name('pengajuan.riwayat');
 });
 
 Route::get('/admin/pets', [PetController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.pets.index');
@@ -31,8 +36,8 @@ Route::delete('/admin/pets/{pet}', [PetController::class, 'destroy'])->middlewar
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
-    Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'show'])->name('pengajuan.show');
-    Route::patch('/pengajuan/{pengajuan}/setujui', [PengajuanController::class, 'setujui'])->name('pengajuan.setujui');
-    Route::patch('/pengajuan/{pengajuan}/tolak', [PengajuanController::class, 'tolak'])->name('pengajuan.tolak');
+    Route::get('/pengajuan', [AdminPengajuanController::class, 'index'])->name('pengajuan.index');
+    Route::get('/pengajuan/{pengajuan}', [AdminPengajuanController::class, 'show'])->name('pengajuan.show');
+    Route::patch('/pengajuan/{pengajuan}/setujui', [AdminPengajuanController::class, 'setujui'])->name('pengajuan.setujui');
+    Route::patch('/pengajuan/{pengajuan}/tolak', [AdminPengajuanController::class, 'tolak'])->name('pengajuan.tolak');
 });

@@ -19,4 +19,9 @@ class Pet extends Model
         'status',
         'description',
     ];
+
+    public function pengajuanAdopsi()
+    {
+        return $this->hasMany(PengajuanAdopsi::class);
+    }
 }
