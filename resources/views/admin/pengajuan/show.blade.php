@@ -27,6 +27,7 @@
         <div>
             <div class="text-xs text-gray-400 mb-1">Hewan</div>
             <div class="font-medium text-gray-800">{{ $pengajuan->pet->name }}</div>
+            <div class="text-xs text-gray-500">Status Hewan: <span class="font-semibold">{{ $pengajuan->pet->status }}</span></div>
         </div>
         <div>
             <div class="text-xs text-gray-400 mb-1">Tanggal pengajuan</div>
@@ -65,7 +66,6 @@
                 </button>
             </div>
 
-            {{-- Form Penolakan (bisa dibuka) --}}
             <div id="form-tolak-container" class="hidden mt-4 p-5 bg-red-50/50 border border-red-200 rounded-xl space-y-3">
                 <h4 class="text-sm font-bold text-red-900">Konfirmasi Penolakan Pengajuan</h4>
                 <p class="text-xs text-red-700">Tuliskan alasan penolakan agar pemohon mengetahui hal yang perlu diperbaiki atau dipersiapkan.</p>
@@ -77,6 +77,9 @@
                         <textarea name="alasan_penolakan" id="alasan_penolakan" rows="3" required
                                   placeholder="Contoh: Rumah pemohon belum memiliki pagar pengaman untuk hewan jenis ini..."
                                   class="w-full text-sm border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"></textarea>
+                        @error('alasan_penolakan')
+                            <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="flex items-center gap-2">
                         <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-red-600 hover:bg-red-700 rounded-lg transition shadow-sm">
