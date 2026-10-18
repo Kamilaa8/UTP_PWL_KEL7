@@ -11,6 +11,10 @@ class PengajuanController extends Controller
 {
     public function create(Pet $pet)
     {
+        if (Auth::user()->isAdmin()) {
+            abort(403, 'Administrator tidak dapat mengajukan adopsi.');
+        }
+
         if ($pet->status !== 'tersedia') {
             return redirect()->route('dashboard')
                 ->with('error', 'Maaf, ' . $pet->name . ' saat ini sudah tidak tersedia untuk diadopsi.');
@@ -31,6 +35,10 @@ class PengajuanController extends Controller
 
     public function store(Request $request, Pet $pet)
     {
+        if (Auth::user()->isAdmin()) {
+            abort(403, 'Administrator tidak dapat mengajukan adopsi.');
+        }
+
         if ($pet->status !== 'tersedia') {
             return redirect()->route('dashboard')
                 ->with('error', 'Maaf, hewan ini sudah tidak tersedia untuk diadopsi.');
@@ -67,6 +75,11 @@ class PengajuanController extends Controller
 
     public function riwayat()
     {
+        if (Auth::user()->isAdmin()) {
+            return redirect()->route('admin.pengajuan.index')
+                ->with('error', 'Administrator tidak memiliki riwayat pengajuan pribadi.');
+        }
+
         $userId = Auth::id();
 
         $riwayat = PengajuanAdopsi::with('pet')

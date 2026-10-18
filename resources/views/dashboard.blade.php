@@ -77,26 +77,6 @@
                                 </span>
                             @endif
                         </div>
-
-                        <div class="pt-1">
-                            @if($pet->status === 'tersedia')
-                                @if(in_array($pet->id, $pendingPetIds ?? []))
-                                    <a href="{{ route('pengajuan.riwayat') }}" class="w-full text-center px-4 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5">
-                                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                                        Sedang Diajukan (Cek Riwayat)
-                                    </a>
-                                @else
-                                    <a href="{{ route('pengajuan.create', $pet->id) }}" class="w-full text-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition shadow-sm flex items-center justify-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                        Ajukan Adopsi
-                                    </a>
-                                @endif
-                            @else
-                                <button disabled class="w-full text-center px-4 py-2 bg-gray-100 text-gray-400 text-xs font-medium rounded-xl cursor-not-allowed">
-                                    Tidak Tersedia
-                                </button>
-                            @endif
-                        </div>
                     </div>
                 </div>
             @empty

@@ -86,5 +86,36 @@ class AuthAndHomeTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Dashboard Pengguna');
         $response->assertSee('Mochi');
+        $response->assertDontSee('Ajukan Adopsi');
+    }
+
+    public function test_admin_tidak_dapat_mengakses_dan_mengajukan_adopsi(): void
+    {
+        $admin = User::create([
+            'name' => 'Admin Test',
+            'email' => 'adm@test.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin',
+        ]);
+
+        $pet = Pet::create([
+            'name' => 'Choco',
+            'species' => 'Anjing',
+            'age' => '1 Tahun',
+            'gender' => 'Jantan',
+            'status' => 'tersedia',
+        ]);
+
+        $this->actingAs($admin)->get(route('pengajuan.create', $pet))->assertStatus(403);
+
+        $this->actingAs($admin)->post(route('pengajuan.store', $pet), [
+            'alasan_adopsi' => 'Saya ingin mengadopsi ini.',
+        ])->assertStatus(403);
+
+        $responseRiwayat = $this->actingAs($admin)->get(route('pengajuan.riwayat'));
+        $responseRiwayat->assertRedirect(route('admin.pengajuan.index'));
+
+        $dashboardResponse = $this->actingAs($admin)->get(route('dashboard'));
+        $dashboardResponse->assertDontSee('Riwayat Pengajuan');
     }
 }

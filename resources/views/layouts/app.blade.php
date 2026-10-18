@@ -39,8 +39,10 @@
                     @auth
                         <a href="{{ route('dashboard') }}"
                             class="text-sm font-medium {{ request()->routeIs('dashboard') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Dashboard</a>
-                        <a href="{{ route('pengajuan.riwayat') }}"
-                            class="text-sm font-medium whitespace-nowrap {{ request()->routeIs('pengajuan.riwayat') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Riwayat Pengajuan</a>
+                        @if(!auth()->user()->isAdmin())
+                            <a href="{{ route('pengajuan.riwayat') }}"
+                                class="text-sm font-medium whitespace-nowrap {{ request()->routeIs('pengajuan.riwayat') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Riwayat Pengajuan</a>
+                        @endif
                         <a href="{{ route('profile.edit') }}"
                             class="text-sm font-medium {{ request()->routeIs('profile.*') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Profil</a>
                         @if(auth()->user()->isAdmin())
