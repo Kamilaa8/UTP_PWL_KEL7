@@ -21,10 +21,6 @@
                     <a href="{{ route('login') }}" class="px-6 py-3 bg-emerald-800/80 hover:bg-emerald-800 text-white font-medium rounded-xl border border-white/20 transition">
                         Masuk ke Akun
                     </a>
-                @else
-                    <div class="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 font-medium">
-                        Halo, {{ auth()->user()->name }}! Anda masuk sebagai <span class="font-bold uppercase text-emerald-200">{{ auth()->user()->role }}</span>.
-                    </div>
                 @endguest
             </div>
         </div>
