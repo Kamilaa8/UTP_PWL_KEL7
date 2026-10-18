@@ -15,10 +15,11 @@
         <h1 class="text-2xl font-bold text-gray-900">Dashboard Admin</h1>
         <p class="text-sm text-gray-500">Ringkasan data hewan dan pengajuan adopsi.</p>
     </div>
-    <div class="flex gap-2">
-        <a href="{{ route('admin.pets.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">Kelola Hewan</a>
-        <a href="{{ url('/admin/pengajuan') }}" class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition shadow-sm">Lihat Semua Pengajuan</a>
-    </div>
+        <div class="flex gap-2">
+            <a href="{{ route('admin.pets.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">Kelola Hewan</a>
+            <a href="{{ route('admin.users.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">Kelola Pengguna</a>
+            <a href="{{ url('/admin/pengajuan') }}" class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition shadow-sm">Lihat Semua Pengajuan</a>
+        </div>
 </div>
 
 {{-- Kartu ringkasan --}}

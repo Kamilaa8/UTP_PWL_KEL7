@@ -43,6 +43,8 @@
                             class="text-sm font-medium {{ request()->routeIs('dashboard') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Dashboard</a>
                         <a href="{{ route('pengajuan.riwayat') }}"
                             class="text-sm font-medium whitespace-nowrap {{ request()->routeIs('pengajuan.riwayat') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Riwayat Pengajuan</a>
+                        <a href="{{ route('profile.edit') }}"
+                            class="text-sm font-medium {{ request()->routeIs('profile.*') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Profil</a>
                         @if(auth()->user()->isAdmin())
                             <a href="{{ route('admin.dashboard') }}"
                                 class="text-sm font-medium whitespace-nowrap {{ request()->is('admin*') ? 'text-emerald-600 font-semibold' : 'text-gray-600 hover:text-emerald-600' }}">Panel Admin</a>
