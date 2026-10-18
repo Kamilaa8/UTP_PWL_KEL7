@@ -23,8 +23,7 @@
 
         <div>
             <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" id="password" required
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+            <x-password-input name="password" id="password" required />
         </div>
 
         <div class="flex items-center justify-between">

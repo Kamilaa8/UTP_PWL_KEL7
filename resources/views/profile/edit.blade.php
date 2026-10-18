@@ -42,22 +42,19 @@
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Password Saat Ini</label>
-                <input type="password" name="current_password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                <x-password-input name="current_password" />
                 @error('current_password')<p class="mt-1 text-xs text-red-600">{{ $message }}</p>@enderror
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Password Baru</label>
-                <input type="password" name="password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                <x-password-input name="password" />
                 @error('password')<p class="mt-1 text-xs text-red-600">{{ $message }}</p>@enderror
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password Baru</label>
-                <input type="password" name="password_confirmation"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                <x-password-input name="password_confirmation" />
             </div>
 
             <button type="submit"
