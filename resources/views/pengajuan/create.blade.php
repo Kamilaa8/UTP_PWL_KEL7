@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <form action="{{ route('pengajuan.store', $pet->id) }}" method="POST" class="space-y-6">
+            <form action="{{ route('pengajuan.store', $pet->id) }}" method="POST" class="space-y-6" data-warn-leave>
                 @csrf
 
                 <div>

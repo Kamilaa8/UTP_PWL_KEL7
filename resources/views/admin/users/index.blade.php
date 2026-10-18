@@ -9,7 +9,7 @@
     <div class="flex gap-2">
         <a href="{{ route('admin.dashboard') }}"
             class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
-            &larr; Dashboard
+            Dashboard
         </a>
         <a href="{{ route('admin.users.create') }}"
             class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition">

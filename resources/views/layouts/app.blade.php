@@ -60,7 +60,7 @@
                             <div class="text-xs uppercase tracking-wider text-emerald-600 font-bold">
                                 {{ auth()->user()->role }}</div>
                         </div>
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Yakin ingin keluar dari akun?')">
                             @csrf
                             <button type="submit"
                                 class="px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition">Keluar</button>
@@ -113,6 +113,25 @@
                 setTimeout(function () { el.remove(); }, 500);
             }, 3000);
         });
+
+    // Peringatan kalau meninggalkan halaman saat form belum disimpan
+    (function () {
+        var kotor = false;  
+        var kirim = false;  
+        
+        document.querySelectorAll('form[data-warn-leave]').forEach(function (form) {
+            form.addEventListener('input', function () { kotor = true; });
+            form.addEventListener('change', function () { kotor = true; });
+            form.addEventListener('submit', function () { kirim = true; });
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            if (kotor && !kirim) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    })();
     </script>
 </body>
 

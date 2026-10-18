@@ -36,7 +36,7 @@
         <h2 class="text-lg font-bold text-gray-900">Ganti Password</h2>
         <p class="text-sm text-gray-500 mt-1 mb-6">Masukkan password saat ini untuk konfirmasi.</p>
 
-        <form action="{{ route('profile.password') }}" method="POST" class="space-y-5">
+        <form action="{{ route('profile.password') }}" method="POST" class="space-y-5" data-warn-leave>
             @csrf
             @method('PUT')
 

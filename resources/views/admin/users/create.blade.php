@@ -4,7 +4,7 @@
 <div class="max-w-xl mx-auto bg-white p-5 sm:p-8 border border-gray-200 rounded-2xl">
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Tambah Pengguna</h1>
 
-    <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-5">
+    <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-5" data-warn-leave>
         @csrf
 
         <div>

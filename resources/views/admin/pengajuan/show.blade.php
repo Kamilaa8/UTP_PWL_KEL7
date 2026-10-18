@@ -60,7 +60,7 @@
                     </button>
                 </form>
 
-                <button type="button" onclick="document.getElementById('form-tolak-container').classList.toggle('hidden')" class="px-5 py-2.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition flex items-center gap-2">
+                <button type="button" onclick="document.getElementById('form-tolak-container').classList.toggle('hidden')" class="px-5 py-2.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition flex items-center gap-2" data-warn-leave>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     Tolak Pengajuan...
                 </button>
