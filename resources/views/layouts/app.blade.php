@@ -19,7 +19,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center h-16">
 
-                {{-- KIRI: logo --}}
                 <div class="flex-1">
                     <a href="{{ auth()->check() ? route('dashboard') : route('home') }}"
                         class="inline-flex items-center gap-2 text-xl font-bold text-emerald-600">
@@ -31,7 +30,6 @@
                     </a>
                 </div>
 
-                {{-- TENGAH: menu --}}
                 <div class="flex items-center gap-4 sm:gap-6">
                     @guest
                         <a href="{{ route('home') }}"
@@ -52,7 +50,6 @@
                     @endauth
                 </div>
 
-                {{-- KANAN: akun --}}
                 <div class="flex-1 flex items-center justify-end gap-3">
                     @auth
                         <div class="text-right hidden sm:block">
@@ -76,6 +73,21 @@
             </div>
         </div>
     </nav>
+
+    @auth
+        @if(auth()->user()->isAdmin() && request()->is('admin*'))
+            <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <a href="{{ route('admin.pets.index') }}"
+                        class="px-4 py-2 text-sm font-medium rounded-lg transition {{ request()->routeIs('admin.pets.*') ? 'text-white bg-emerald-600 shadow-sm' : 'text-gray-700 bg-white border border-gray-200 hover:bg-gray-50' }}">Kelola Hewan</a>
+                    <a href="{{ route('admin.users.index') }}"
+                        class="px-4 py-2 text-sm font-medium rounded-lg transition {{ request()->routeIs('admin.users.*') ? 'text-white bg-emerald-600 shadow-sm' : 'text-gray-700 bg-white border border-gray-200 hover:bg-gray-50' }}">Kelola Pengguna</a>
+                    <a href="{{ route('admin.pengajuan.index') }}"
+                        class="px-4 py-2 text-sm font-medium rounded-lg transition {{ request()->routeIs('admin.pengajuan.*') ? 'text-white bg-emerald-600 shadow-sm' : 'text-gray-700 bg-white border border-gray-200 hover:bg-gray-50' }}">Lihat Semua Pengajuan</a>
+                </div>
+            </div>
+        @endif
+    @endauth
 
     @if(session('success') || session('error'))
         <div
@@ -114,24 +126,23 @@
             }, 3000);
         });
 
-    // Peringatan kalau meninggalkan halaman saat form belum disimpan
-    (function () {
-        var kotor = false;  
-        var kirim = false;  
-        
-        document.querySelectorAll('form[data-warn-leave]').forEach(function (form) {
-            form.addEventListener('input', function () { kotor = true; });
-            form.addEventListener('change', function () { kotor = true; });
-            form.addEventListener('submit', function () { kirim = true; });
-        });
+        (function () {
+            var kotor = false;
+            var kirim = false;
 
-        window.addEventListener('beforeunload', function (e) {
-            if (kotor && !kirim) {
-                e.preventDefault();
-                e.returnValue = '';
-            }
-        });
-    })();
+            document.querySelectorAll('form[data-warn-leave]').forEach(function (form) {
+                form.addEventListener('input', function () { kotor = true; });
+                form.addEventListener('change', function () { kotor = true; });
+                form.addEventListener('submit', function () { kirim = true; });
+            });
+
+            window.addEventListener('beforeunload', function (e) {
+                if (kotor && !kirim) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+        })();
     </script>
 </body>
 

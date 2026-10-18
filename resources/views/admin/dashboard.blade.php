@@ -10,19 +10,11 @@
     ];
 @endphp
 
-<div class="mb-8 flex flex-wrap items-center justify-between gap-3">
-    <div>
-        <h1 class="text-2xl font-bold text-gray-900">Dashboard Admin</h1>
-        <p class="text-sm text-gray-500">Ringkasan data hewan dan pengajuan adopsi.</p>
-    </div>
-        <div class="flex gap-2">
-            <a href="{{ route('admin.pets.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">Kelola Hewan</a>
-            <a href="{{ route('admin.users.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">Kelola Pengguna</a>
-            <a href="{{ url('/admin/pengajuan') }}" class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition shadow-sm">Lihat Semua Pengajuan</a>
-        </div>
+<div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-900">Dashboard Admin</h1>
+    <p class="text-sm text-gray-500">Ringkasan data hewan dan pengajuan adopsi.</p>
 </div>
 
-{{-- Kartu ringkasan --}}
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
     <div class="bg-white border border-gray-200 rounded-xl p-5">
         <p class="text-sm text-gray-500">Total Hewan</p>
@@ -44,7 +36,6 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    {{-- Grafik per status --}}
     <div class="bg-white border border-gray-200 rounded-xl p-6">
         <h2 class="text-lg font-semibold text-gray-900 mb-4">Pengajuan per Status</h2>
         <div class="space-y-4">
@@ -63,7 +54,6 @@
         </div>
     </div>
 
-    {{-- 5 pengajuan terbaru --}}
     <div class="lg:col-span-2 bg-white border border-gray-200 rounded-xl p-6">
         <h2 class="text-lg font-semibold text-gray-900 mb-4">5 Pengajuan Terbaru</h2>
         <div class="overflow-x-auto">
