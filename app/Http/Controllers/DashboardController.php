@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\PengajuanAdopsi;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -10,6 +12,13 @@ class DashboardController extends Controller
     {
         $pets = Pet::latest()->get();
 
-        return view('dashboard', compact('pets'));
+        $pendingPetIds = (Auth::check() && !Auth::user()->isAdmin())
+            ? PengajuanAdopsi::where('user_id', Auth::id())
+                ->where('status', 'menunggu')
+                ->pluck('pet_id')
+                ->toArray()
+            : [];
+
+        return view('dashboard', compact('pets', 'pendingPetIds'));
     }
 }

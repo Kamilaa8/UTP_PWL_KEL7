@@ -86,7 +86,7 @@ class AuthAndHomeTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Dashboard Pengguna');
         $response->assertSee('Mochi');
-        $response->assertDontSee('Ajukan Adopsi');
+        $response->assertSee('Ajukan Adopsi');
     }
 
     public function test_admin_tidak_dapat_mengakses_dan_mengajukan_adopsi(): void
@@ -117,5 +117,6 @@ class AuthAndHomeTest extends TestCase
 
         $dashboardResponse = $this->actingAs($admin)->get(route('dashboard'));
         $dashboardResponse->assertDontSee('Riwayat Pengajuan');
+        $dashboardResponse->assertDontSee('Ajukan Adopsi');
     }
 }
